@@ -17,7 +17,7 @@ class Snake:
     def create_snake(self):
         for position in STARTING_POSITIONS:
             self.add_segment(position)
-
+    # Method for adding a new block on eating food
     def add_segment(self, position):
         new_segment = Turtle(shape="square")
         new_segment.penup()
@@ -26,6 +26,7 @@ class Snake:
         new_segment.speed("fast")
         self.segments.append(new_segment)
 
+    # Reseting the snake to original position
     def reset(self):
         for seg in self.segments:
             seg.goto(1000, 1000)
@@ -42,7 +43,8 @@ class Snake:
             new_y = self.segments[seg_num - 1].ycor()
             self.segments[seg_num].goto(x=new_x, y=new_y)
         self.head.forward(MOVE_DISTANCE)
-
+    
+    # Methods for changing the snake direction
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
